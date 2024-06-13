@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <title>
+       login
+    </title>
+    <link rel="stylesheet" href="../static/css/loginmeme.css"/>
+</head>
+<body>
+   <header id="nav-wrapper">
+      <nav id="nav">
+        <div class="nav left">
+          <span class="gradient skew"><h1 class="logo un-skew"><a href="/home">MemeMusuem</a></h1></span>
+          <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+        </div>
+        <div class="nav right">
+          <a href="/home" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
+          <a href="/about" class="nav-link active"><span class="nav-link-span"><span class="u-nav">About Us</span></span></a>
+          <a href="/login" class="nav-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
+          <a href="/register" class="nav-link"><span class="nav-link-span"><span class="u-nav">Register</span></span></a>
+        </div>
+      </nav>
+    </header>
+   <div class="container">
+      <h1>LOGIN</h1>
+      <form action="/login" method="POST">
+         <label for="email"> Email</label><input type="email" name="email" id="email" placeholder="Enter Email">
+         <label for="password">Password</label>  <input type="password"
+         id="password"
+         name="password"
+         placeholder="Enter Password"/>
+         <button type="submit">Login</button>
+         <div class="redirect"><b>
+            <a href="#">Forgot Password?</a>
+            <br><br>
+            Don't have an account?</b>
+            <a href="/register">Register here!</a>
+         </div>
+      </form>
+      <div class="msg">{{ msg }}</div>
+   </div>
+      
+</body>
+</html>

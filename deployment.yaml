@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newmeme
+spec: 
+  replicas: 5
+  selector:
+    matchLabels:
+      app: newmeme
+  template:
+    metadata:
+      labels:
+        app: newmeme
+    spec:
+      containers:
+      - name: meme
+        image: us.icr.io/newmeme/nmeme
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000

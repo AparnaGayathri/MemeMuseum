@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS styles for the search box */
+    body{
+        background: url("../static/images/memebg.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    #nav-wrapper {
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+  
+  #nav {
+    display: flex;
+    flex-direction: column;
+    height: 4em;
+    overflow: hidden;
+  
+    &.nav-visible {
+      height: 100%;
+      overflow: auto;
+    }
+  }
+  
+  .nav {
+    display: flex;
+    height: 4em;
+    line-height: 4em;
+    flex-grow: 1;
+  }
+  
+  .nav-link,
+  .logo {
+    padding: 0 1em;
+  }
+  
+  span.gradient {
+    padding: 0 1em;
+    position: relative;
+    right: 1em;
+    margin-right: auto;
+  
+    &:hover {
+      animation-name: logo-hover;
+      animation-duration: 0.3s;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.17, 0.57, 0.31, 0.85);
+    }
+  }
+  
+  
+  h1.logo  {
+    text-decoration: none;
+  }
+  
+  .nav-link {
+    text-transform: uppercase;
+    text-align: center;
+    border-top: 0.5px solid ;
+  }
+  
+  a:link, a:visited, a:active{
+    text-decoration: none;
+    color: #f857a8;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .btn-nav {
+    color: #f857a8;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+  
+  @media (min-width: 800px) {
+    #nav-wrapper {
+      overflow: hidden;
+    }
+  
+    #nav {
+      overflow: hidden;
+      flex-direction: row;
+    }
+  
+    .nav-link {
+      border-top: none;
+    }
+  
+    .right {
+      overflow: hidden;
+      flex-direction: row;
+      justify-content: flex-end;
+      position: relative;
+      left: 1.5em;
+      height: auto;
+    }
+  
+    .btn-nav {
+      display: none;
+    }
+  
+    .nav a:link, a:visited, a:active {
+      &.active {
+        background: #f857a8;
+  background: -webkit-linear-gradient(45deg, #f857a8, #ff5858);
+        color: #fff;
+      }
+    }
+  
+    .nav-link-span {
+        transform: skew(20deg);
+      display: inline-block;
+    }
+  
+    .nav-link {
+        transform: skew(-20deg);
+      color: #777;
+      text-decoration: none;
+  
+      &:last-child {
+        padding-right: 3em;
+      }
+    }
+  
+    a:hover.nav-link:not(.active) {
+      color: #444;
+      background: #ddd;
+      background: linear-gradient(45deg, #fff, #ddd);
+    }
+  }
+  
+  @keyframes logo-hover {
+    20% {
+      padding-right: 0em;
+    }
+    100% {
+      padding-right: 5em;
+    }
+  }
+
+    .search-box {
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 500px;
+      height: 60px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 5px;
+      margin-top: 15%;
+      margin-bottom: auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .search-box input[type="text"] {
+      flex: 1;
+      border: none;
+      height: 100%;
+      padding: 0 10px;
+      font-size: 14px;
+    }
+
+    .search-box button {
+      background-color: #000;
+      color: white;
+      border: none;
+      height: 100%;
+      padding: 0 15px;
+      cursor: pointer;
+    }
+    div.gallery {
+  margin: 5px;
+  /* border: 1px solid #ccc; */
+  float: left;
+  width: 180px;
+}
+/* 
+div.gallery:hover {
+  border: 1px solid #777;
+} */
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+</style>
+</head>
+<body>
+    <header id="nav-wrapper">
+        <nav id="nav">
+          <div class="nav left">
+            <span class="gradient skew"><h1 class="logo un-skew"><a href="/home">MemeMusuem</a></h1></span>
+            <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+          </div>
+          <div class="nav right">
+            <a href="/home" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
+            <a href="/about" class="nav-link active"><span class="nav-link-span"><span class="u-nav">About Us</span></span></a>
+            <a href="/login" class="nav-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
+            <a href="/register" class="nav-link"><span class="nav-link-span"><span class="u-nav">Register</span></span></a>
+          </div>
+        </nav>
+      </header>
+      <form action="/test" method="post">
+      <div class="search-box">
+    <input type="text" name="key" id="key" placeholder="Search for memes...">
+    <button type="submit">Search</button>
+  </div>
+</form>
+<!-- <div class="gallery output1">
+      <img src="{{output1}}" width="600" height="400">
+  </div>
+  
+  <div class="gallery output2">
+      <img src="{{output2}}" width="600" height="400">
+  </div>
+  
+  <div class="gallery output3">
+      <img src="{{output3}}" width="600" height="400">
+  </div>
+  
+  <div class="gallery output4">
+      <img src="{{output4}}" width="600" height="400">
+  </div> -->
+<!-- <div class="main">
+   <div class="card">
+   <div class="image output1">
+      <img src="{{output1}}">
+   </div>
+
+   <div class="card">
+    <div class="image output2">
+        <img src="{{output2}}">
+    </div>
+   </div>
+   </div>
+    -->
+  <!-- <div class="output1"><img src="{{output1}}" alt=""></div>
+  <div class="output2"><img src="{{output2}}" alt=""></div> -->
+</body>
+</html>
